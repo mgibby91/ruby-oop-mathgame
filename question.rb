@@ -9,7 +9,7 @@ class Question
   end
 
   def generate_random_number
-    return rand(20) + 1
+    rand(20) + 1
   end
 
   def display_question
@@ -20,7 +20,7 @@ class Question
     question = "What does #{first_num} plus #{second_num} equal?"
 
     @current_question = "#{@current_player.name}: #{question}"
-    return @current_question
+    @current_question
   end
 
   def player_answer

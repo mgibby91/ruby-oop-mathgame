@@ -7,7 +7,7 @@ class Game
   end
 
   def run_game
-    while(not game_over)
+    while(not game_over?)
       puts ""
       puts "----- NEW TURN -----"
       puts ""
@@ -17,32 +17,18 @@ class Game
       question.player_answer
       puts "#{player.player_summary} vs. #{@players[1].player_summary}"
 
-      if player.is_alive == true
-        @players.rotate!
-      else
-        break
-      end
+      @players.rotate!
     end
 
-    puts "#{@players[1].name} wins with a score of #{@players[1].lives}/3"
+    puts "#{@players[0].name} wins with a score of #{@players[0].lives}/3"
     puts ""
     puts "----- GAME OVER -----"
     puts ""
     puts "Goodbye!"
   end
 
-  def game_over
-    if @players[0].is_alive == true
-      return false
-    else
-      return true
-    end
-  end
-
-  def winner
-    @players.select do |player|
-      return player.alive?
-    end
+  def game_over?
+    not @players[1].is_alive?
   end
 
 end

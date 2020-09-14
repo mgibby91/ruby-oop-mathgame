@@ -11,12 +11,8 @@ class Player
     @lives -= 1
   end
 
-  def is_alive
-    if @lives > 0
-      return true
-    else
-      return false
-    end
+  def is_alive?
+    @lives > 0
   end
 
   def player_summary
