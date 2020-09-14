@@ -1,6 +1,6 @@
 class Player
 
-  attr_accessor :name, is_alive?, message
+  attr_reader :name, :is_alive, :lives
 
   def initialize(name)
     @name = name
@@ -11,7 +11,7 @@ class Player
     @lives -= 1
   end
 
-  def is_alive?
+  def is_alive
     if @lives > 0
       return true
     else

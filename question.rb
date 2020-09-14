@@ -1,14 +1,15 @@
 class Question
 
-  attr_reader :display_question
+  attr_reader :current_player, :current_answer, :current_question
 
   def initialize(current_player)
     @current_player = current_player
     @current_answer
+    @current_question
   end
 
   def generate_random_number
-    rand(20) + 1
+    return rand(20) + 1
   end
 
   def display_question
@@ -18,17 +19,18 @@ class Question
 
     question = "What does #{first_num} plus #{second_num} equal?"
 
-    return "#{current_player}: #{question}"
+    @current_question = "#{@current_player.name}: #{question}"
+    return @current_question
   end
 
   def player_answer
     answer = gets.chomp.to_i
 
     if answer == @current_answer
-      return "#{current_player}: YES! You are correct."
+      puts "#{@current_player.name}: YES! You are correct."
     else
       @current_player.lose_a_life
-      return "#{@current_player}: Seriously?! No!"
+      puts "#{@current_player.name}: Seriously?! No!"
     end
   end
 
